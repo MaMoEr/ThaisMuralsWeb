@@ -42,4 +42,4 @@ Don't add the `CNAME` file before the DNS records exist: GitHub would start redi
 
 ## Contact form
 
-The form posts to Formspree. Replace `YOUR_FORM_ID` in `index.html` with the form's ID from formspree.io. In Formspree, add `thaismurals.se` under the form's allowed domains once the site runs there.
+The form posts to Formspree form `mzerdqng` (set in the form's `action` in `index.html`). `thaismurals.se` is on the form's allowed domains in Formspree, so submissions from other origins (such as localhost) are rejected.

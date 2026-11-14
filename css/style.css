@@ -110,6 +110,37 @@ h1 em, h2 em { font-style: italic; }
 .hero h1 { font-size: var(--text-display); line-height: .92; margin: 20px 0 24px; }
 .hero p { font-size: var(--text-small); line-height: 1.65; max-width: 34ch; margin: 0; }
 
+/* Testimonials: heading left, quotes right; quotes stack as more arrive */
+.testimonials {
+  padding: var(--section) var(--gutter) 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 10vw;
+  align-items: start;
+}
+.testimonials h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 0; }
+.testimonialList { display: grid; gap: 56px; }
+.testimonial { margin: 0; padding-top: 28px; border-top: 1px solid var(--line); }
+.testimonial blockquote { margin: 0; }
+.testimonial blockquote p {
+  margin: 0;
+  font: italic 400 var(--text-h3)/1.25 var(--font-display);
+  color: var(--espresso);
+  text-wrap: pretty;
+}
+.testimonial blockquote p::before { content: "“"; }
+.testimonial blockquote p::after { content: "”"; }
+.testimonial .translation { margin: 20px 0 0; font-size: var(--text-small); line-height: 1.6; max-width: 58ch; }
+.testimonial figcaption {
+  margin-top: 22px;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--driftwood);
+}
+.testimonials + .intro { border-top: 1px solid var(--line); margin: 0 var(--gutter); padding-left: 0; padding-right: 0; }
+
 /* Intro */
 .intro { padding: var(--section) var(--gutter) 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 10vw; align-items: start; }
 .intro h2 { font-size: var(--text-h2); line-height: .95; margin: 0; }
@@ -246,6 +277,7 @@ h1 em, h2 em { font-style: italic; }
   .heroPhoto { order: -1; min-height: 50vh; background-position: 45% 35%; }
   .heroCopy { padding: 36px 7vw 48px; }
   .hero h1 { font-size: 54px; margin: 14px 0 18px; }
+  .testimonials { grid-template-columns: 1fr; gap: 36px; padding-bottom: 56px; }
   .intro { grid-template-columns: 1fr; gap: 28px; padding-bottom: 48px; }
   .gallery { grid-template-columns: 1fr 1fr; padding: 0; }
   .gallery img { height: 46vh; }

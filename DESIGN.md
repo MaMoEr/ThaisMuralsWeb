@@ -1,4 +1,4 @@
-# Fabelfabriken design system
+# Thais Murals design system
 
 Warm, minimal, modern, artistic. The murals are the loudest thing on the page; type and colour stay quiet around them.
 
@@ -39,4 +39,5 @@ Keep Instrument Serif at 26 px or larger; it is thin and loses detail when small
 - **Button**: solid espresso, linen text, square corners, 12 px caps. Hover inverts to outline. On espresso backgrounds it becomes linen with espresso text.
 - **Eyebrow**: 12 px caps label in driftwood above every heading.
 - **Hero**: split layout. Sand text panel on the left (5 parts), mural photo on the right (7 parts), nothing over the mural. On phones the photo comes first.
+- **Contact form**: on the espresso contact section. Fields are underlined inputs with 12 px caps labels in sand; optional fields say "optional". Type of space is a row of square chips (selected = linen fill). Sends to Formspree via [js/contact.js](js/contact.js); every "Request a mural" button links to `#contact`.
 - **Photos**: full-bleed, no borders or rounded corners. A light shared filter keeps them consistent (`img` rule).

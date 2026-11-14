@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Fabelfabriken — Hand-painted murals in Stockholm</title>
+  <title>Thais Murals — Hand-painted murals in Stockholm</title>
   <meta name="description" content="Bespoke hand-painted murals and illustrated spaces in Stockholm by Thais Mota Eriksson.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 <body>
 
 <nav class="nav">
-  <div class="brand">FABELFABRIKEN</div>
+  <a class="brand" href="#">THAIS MURALS</a>
   <div class="navlinks">
     <a href="#about">About</a>
     <a href="#murals">Murals</a>
@@ -27,7 +27,7 @@
     <div class="eyebrow">Hand-painted murals · Stockholm</div>
     <h1>Walls that<br>tell <em>stories.</em></h1>
     <p>Bespoke murals and illustrated spaces, created by hand for homes and businesses.</p>
-    <div><a class="button" href="https://wa.me/46725262698?text=Hi%20Thais%2C%20I%27d%20like%20to%20ask%20about%20a%20custom%20mural." target="_blank" rel="noopener">Request a mural →</a></div>
+    <div><a class="button" href="#contact">Request a mural →</a></div>
   </div>
   <div class="heroPhoto" role="img" aria-label="Hand-painted botanical mural with poppies and a heron in a Stockholm dining room"></div>
 </header>
@@ -59,9 +59,9 @@
   <div class="storyText">
     <div class="eyebrow">The process</div>
     <h2>From an idea<br>to <em>your wall.</em></h2>
-    <p>Send me a photo of the wall, its approximate measurements and any references you love. I’ll come back to you with questions, a creative direction and a tailored quote based on size, complexity and location.</p>
+    <p>Tell me about the wall, its approximate measurements and any references you love. I’ll come back to you with questions, a creative direction and a tailored quote based on size, complexity and location.</p>
     <p>No two walls are the same — and the price shouldn’t be either.</p>
-    <a class="button" href="https://wa.me/46725262698?text=Hi%20Thais%2C%20I%27m%20interested%20in%20a%20mural.%20I%20can%20send%20you%20a%20photo%20of%20the%20wall%2C%20measurements%20and%20my%20references." target="_blank" rel="noopener">Start your project →</a>
+    <a class="button" href="#contact">Start your project →</a>
   </div>
 </section>
 
@@ -72,16 +72,66 @@
 </section>
 
 <section class="cta" id="contact">
-  <div class="eyebrow">Stockholm · commissions open</div>
-  <h2>Let’s create something <em>meaningful.</em></h2>
-  <p>Have a wall in mind? Send a photo, approximate dimensions and your inspiration. I’ll reply with the next steps for a personalised mural proposal.</p>
-  <a class="button" href="https://wa.me/46725262698?text=Hi%20Thais%2C%20I%27d%20like%20a%20quote%20for%20a%20custom%20mural." target="_blank" rel="noopener">WhatsApp me →</a>
+  <div class="ctaIntro">
+    <div class="eyebrow">Stockholm · commissions open</div>
+    <h2>Let’s create something <em>meaningful.</em></h2>
+    <p>Have a wall in mind? Tell me about the space and your ideas. I’ll reply by email with questions and the next steps for a personalised mural proposal.</p>
+    <p class="ctaNote">Photos of the wall help a lot. Once I reply, you can send them straight back by email.</p>
+  </div>
+
+  <!-- Formspree: replace YOUR_FORM_ID with the ID from formspree.io (Forms → Integration). -->
+  <form class="contactForm" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New mural enquiry from thaismurals.se">
+    <div class="hp" aria-hidden="true"><label for="cf-gotcha">Leave this empty</label><input type="text" id="cf-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+
+    <div class="field">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="cf-email">Email</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="cf-phone">Phone <span class="opt">optional</span></label>
+      <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="cf-location">Where is the wall? <span class="opt">optional</span></label>
+      <input id="cf-location" name="location" type="text" placeholder="e.g. Södermalm, Stockholm">
+    </div>
+
+    <fieldset class="field full">
+      <legend>Type of space</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="space" value="Home" checked><span>Home</span></label>
+        <label class="chip"><input type="radio" name="space" value="Business"><span>Business</span></label>
+        <label class="chip"><input type="radio" name="space" value="Other"><span>Other</span></label>
+      </div>
+    </fieldset>
+
+    <div class="field full">
+      <label for="cf-size">Approximate wall size <span class="opt">optional</span></label>
+      <input id="cf-size" name="wall_size" type="text" placeholder="e.g. 3 × 2.5 m">
+    </div>
+    <div class="field full">
+      <label for="cf-message">Your idea</label>
+      <textarea id="cf-message" name="message" rows="5" required placeholder="The room, the mood, colours or references you love…"></textarea>
+    </div>
+
+    <div class="formFoot full">
+      <button class="button" type="submit">Send enquiry →</button>
+      <p class="privacy">Your details are only used to reply to your enquiry.</p>
+    </div>
+    <p class="formStatus full" id="cf-status" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 <footer class="foot">
-  <span>© 2026 Fabelfabriken</span>
+  <span>© 2026 Thais Murals</span>
   <span>Hand-painted murals · Stockholm</span>
 </footer>
 
+<script src="js/contact.js" defer></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Fabelfabriken design system
+/* Thais Murals design system
    Fonts: Instrument Serif (display) + Instrument Sans (body, labels).
    Colours: Linen Gallery palette (sand, linen, taupe, clay, espresso, driftwood).
    See DESIGN.md for usage rules. */
@@ -88,7 +88,7 @@ h1 em, h2 em { font-style: italic; }
   padding: 28px 5vw;
   color: white;
 }
-.brand { font-family: var(--font-display); letter-spacing: .16em; font-size: 24px; color: var(--espresso); }
+.brand { font-family: var(--font-display); letter-spacing: .16em; font-size: 24px; color: var(--espresso); text-decoration: none; }
 .navlinks { display: flex; gap: 26px; font-size: var(--text-label); font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
 .navlinks a { text-decoration: none; }
 .navlinks a:hover { text-decoration: underline; text-underline-offset: 6px; }
@@ -151,13 +151,80 @@ h1 em, h2 em { font-style: italic; }
 .storyText p { margin: 0 0 16px; max-width: 52ch; }
 .storyText .button { align-self: flex-start; }
 
-/* Contact */
-.cta { text-align: center; padding: 120px var(--gutter); background: var(--espresso); color: var(--sand); }
+/* Contact: intro left, enquiry form right, on espresso */
+.cta {
+  padding: 120px var(--gutter);
+  background: var(--espresso);
+  color: var(--sand);
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px 8vw;
+  align-items: start;
+  scroll-margin-top: 0;
+}
+.ctaIntro { min-width: 0; }
 .cta .eyebrow { color: var(--sand); opacity: .8; }
-.cta h2 { font-size: clamp(48px, 7vw, 100px); line-height: .95; margin: 14px 0 22px; color: var(--linen); }
-.cta p { max-width: 56ch; margin: 0 auto; }
-.cta .button { background: var(--linen); color: var(--espresso); border-color: var(--linen); }
+.cta h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 24px; color: var(--linen); }
+.cta p { max-width: 46ch; margin: 0 0 16px; }
+.cta .ctaNote { font-size: var(--text-small); opacity: .8; }
+.cta .button { background: var(--linen); color: var(--espresso); border-color: var(--linen); margin-top: 0; cursor: pointer; }
 .cta .button:hover { background: transparent; color: var(--linen); }
+.cta .button:disabled { opacity: .6; cursor: progress; }
+.cta :focus-visible { outline-color: var(--linen); }
+
+.contactForm { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; min-width: 0; }
+.contactForm .full { grid-column: 1 / -1; }
+.field { display: grid; gap: 8px; min-width: 0; border: 0; margin: 0; padding: 0; }
+.field label, .field legend {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--sand);
+  padding: 0;
+}
+.field legend { margin-bottom: 12px; }
+.opt { font-weight: 400; letter-spacing: .08em; text-transform: none; opacity: .7; margin-left: 6px; }
+.field input, .field textarea {
+  width: 100%;
+  font: 400 var(--text-body)/1.5 var(--font-body);
+  color: var(--linen);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(231, 221, 207, .45);
+  border-radius: 0;
+  padding: 8px 0 10px;
+}
+.field textarea { resize: vertical; min-height: 120px; border: 1px solid rgba(231, 221, 207, .45); padding: 12px 14px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--sand); opacity: .5; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--linen); }
+.field input:focus-visible, .field textarea:focus-visible { box-shadow: 0 1px 0 0 var(--linen); }
+.field .invalid { border-color: #E3A78C; }
+.fieldError { font-size: 13px; color: #F0C3AE; margin: 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.field .chip { position: relative; cursor: pointer; text-transform: none; letter-spacing: 0; font-weight: 400; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid rgba(231, 221, 207, .45);
+  font-size: var(--text-small);
+  color: var(--sand);
+  transition: background-color .2s ease, color .2s ease;
+}
+.chip input:checked + span { background: var(--linen); color: var(--espresso); border-color: var(--linen); }
+.chip input:focus-visible + span { outline: 2px solid var(--linen); outline-offset: 3px; }
+
+.formFoot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.cta .privacy { font-size: 13px; margin: 0; opacity: .7; }
+.cta .formStatus { margin: 0; font-size: var(--text-small); color: var(--linen); }
+.formStatus:empty { display: none; }
+.formStatus.error { color: #F0C3AE; }
+.formDone { grid-column: 1 / -1; border: 1px solid rgba(231, 221, 207, .45); padding: 40px; }
+.formDone h3 { font-size: var(--text-h3); color: var(--linen); margin: 0 0 12px; }
+.formDone p { margin: 0; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Footer */
 .foot {
@@ -189,5 +256,8 @@ h1 em, h2 em { font-style: italic; }
   .story { grid-template-columns: 1fr; }
   .story img { min-height: 500px; }
   .storyText { padding: 70px 8vw; }
+  .cta { grid-template-columns: 1fr; }
+  .contactForm { grid-template-columns: 1fr; gap: 24px; }
+  .formDone { padding: 28px; }
   .foot { gap: 15px; flex-direction: column; }
 }

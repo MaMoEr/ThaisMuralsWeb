@@ -5,12 +5,43 @@
   if (!form) return;
   const status = document.getElementById('cf-status');
   const button = form.querySelector('button[type="submit"]');
+  const buttonLabel = button.textContent;
 
-  const messages = {
-    name: 'Please tell me your name.',
-    email: 'Please enter an email address I can reply to, like name@example.com.',
-    message: 'Please write a few words about your idea.',
+  // Texts per page language (<html lang>). Swedish is the default.
+  const texts = {
+    sv: {
+      fields: {
+        name: 'Skriv gärna ditt namn.',
+        email: 'Skriv en mejladress jag kan svara till, t.ex. namn@exempel.se.',
+        message: 'Skriv några ord om din idé.',
+      },
+      required: 'Fyll i det här fältet.',
+      notConnected: 'Formuläret är inte kopplat än. Lägg in Formspree-formulärets id i index.html.',
+      sending: 'Skickar…',
+      thanks: function (name) { return name ? 'Tack, ' + name + '.' : 'Tack.'; },
+      sent: 'Din förfrågan är skickad. Jag svarar via mejl, och du kan skicka bilder på väggen i ditt svar.',
+      failed: 'Meddelandet kunde inte skickas. ',
+      retry: ' Försök igen om en stund.',
+      offline: 'Kontrollera din internetanslutning och försök igen.',
+    },
+    en: {
+      fields: {
+        name: 'Please tell me your name.',
+        email: 'Please enter an email address I can reply to, like name@example.com.',
+        message: 'Please write a few words about your idea.',
+      },
+      required: 'Please fill in this field.',
+      notConnected: 'The form is not connected yet. Add the Formspree form ID in index.html.',
+      sending: 'Sending…',
+      thanks: function (name) { return name ? 'Thank you, ' + name + '.' : 'Thank you.'; },
+      sent: 'Your enquiry has been sent. I’ll reply by email, and you can send photos of the wall in your reply.',
+      failed: 'Your message could not be sent. ',
+      retry: ' Please try again in a moment.',
+      offline: 'Please check your internet connection and try again.',
+    },
   };
+  const t = texts[(document.documentElement.lang || 'sv').slice(0, 2)] || texts.sv;
+  const messages = t.fields;
 
   function setError(input, text) {
     let err = input.parentElement.querySelector('.fieldError');
@@ -34,7 +65,7 @@
 
   function check(input) {
     const ok = input.checkValidity();
-    setError(input, ok ? '' : messages[input.name] || 'Please fill in this field.');
+    setError(input, ok ? '' : messages[input.name] || t.required);
     return ok;
   }
 
@@ -59,12 +90,12 @@
     }
 
     if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-      showStatus('The form is not connected yet. Add the Formspree form ID in index.html.', true);
+      showStatus(t.notConnected, true);
       return;
     }
 
     button.disabled = true;
-    button.textContent = 'Sending…';
+    button.textContent = t.sending;
     showStatus('', false);
 
     try {
@@ -84,16 +115,16 @@
       done.setAttribute('role', 'status');
       done.tabIndex = -1;
       const title = document.createElement('h3');
-      title.textContent = name ? 'Thank you, ' + name + '.' : 'Thank you.';
+      title.textContent = t.thanks(name);
       const text = document.createElement('p');
-      text.textContent = 'Your enquiry has been sent. I’ll reply by email, and you can send photos of the wall in your reply.';
+      text.textContent = t.sent;
       done.append(title, text);
       form.replaceWith(done);
       done.focus();
     } catch (error) {
       button.disabled = false;
-      button.textContent = 'Send enquiry →';
-      showStatus('Your message could not be sent. ' + (error.message ? error.message + ' Please try again in a moment.' : 'Please check your internet connection and try again.'), true);
+      button.textContent = buttonLabel;
+      showStatus(t.failed + (error.message ? error.message + t.retry : t.offline), true);
     }
   });
 })();

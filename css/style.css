@@ -144,18 +144,38 @@ h1 em, h2 em { font-style: italic; }
 .testimonial blockquote p::before { content: "“"; }
 .testimonial blockquote p::after { content: "”"; }
 .testimonial .translation { margin: 20px 0 0; font-size: var(--text-small); line-height: 1.6; max-width: 58ch; }
-.testimonials + .intro { border-top: 1px solid var(--line); margin: 0 var(--gutter); padding-left: 0; padding-right: 0; }
 
-/* Intro */
-.intro { padding: var(--section) var(--gutter) 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 10vw; align-items: start; }
-.intro h2 { font-size: var(--text-h2); line-height: .95; margin: 0; }
-.intro p { margin: 0; max-width: 58ch; }
+/* About: text left, portrait right, under a rule from the testimonials */
+.about {
+  margin: 0 var(--gutter);
+  padding: var(--section) 0 96px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 8vw;
+  align-items: center;
+}
+.about h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 28px; }
+.about p { margin: 0; max-width: 52ch; }
+.about img { height: 72vh; max-height: 760px; object-position: center 25%; }
 
 /* Gallery */
 .gallery { display: grid; grid-template-columns: 1.15fr .85fr .85fr; gap: 8px; padding: 0 1vw; }
 .gallery img { height: 62vh; }
 .gallery img:nth-child(2) { object-position: 55% center; }
 .gallery img:nth-child(3) { object-position: center 30%; }
+.galleryMore { padding: 22px 1vw 0; text-align: right; }
+.galleryMore a {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--espresso);
+  text-decoration: none;
+  border-bottom: 1px solid var(--taupe);
+  padding-bottom: 4px;
+}
+.galleryMore a:hover { border-bottom-color: var(--espresso); }
 
 /* Services */
 .section { padding: var(--section) var(--gutter); }
@@ -168,6 +188,7 @@ h1 em, h2 em { font-style: italic; }
 }
 .service { padding: 32px 28px 36px; border-right: 1px solid var(--line); }
 .service:last-child { border-right: 0; }
+.services.three { grid-template-columns: repeat(3, 1fr); }
 .service b {
   display: block;
   font-size: var(--text-label);
@@ -186,6 +207,78 @@ h1 em, h2 em { font-style: italic; }
 .storyText h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 26px; }
 .storyText p { margin: 0 0 16px; max-width: 52ch; }
 .storyText .button { align-self: flex-start; }
+
+/* Numbered steps (process) */
+.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; max-width: 52ch; border-top: 1px solid var(--line); }
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  grid-row: span 2;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--driftwood);
+  padding-top: 2px;
+}
+.steps b { font-size: var(--text-label); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--espresso); }
+.steps p { margin: 4px 0 0; font-size: var(--text-small); line-height: 1.6; }
+
+/* Price: heading left, text right */
+.price, .faq {
+  padding: var(--section) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 10vw;
+  align-items: start;
+}
+.price { padding-bottom: 64px; }
+.price h2, .faq h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 0; }
+.price p { margin: 0; max-width: 46ch; align-self: end; }
+
+/* FAQ: native <details>, questions in sans (serif stays 26px+) */
+.faq { padding-top: 64px; }
+.faqList { border-top: 1px solid var(--line); }
+.faqList details { border-bottom: 1px solid var(--line); }
+.faqList summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--espresso);
+}
+.faqList summary::-webkit-details-marker { display: none; }
+.faqList summary::after { content: "+"; font-weight: 400; font-size: 22px; line-height: 1; color: var(--driftwood); transition: transform .2s ease; }
+.faqList details[open] summary::after { transform: rotate(45deg); }
+.faqList details p { margin: 0 0 24px; max-width: 58ch; }
+
+/* Projects page */
+.nav.onLight { position: static; color: var(--espresso); }
+.pageHead { padding: 40px var(--gutter) 64px; }
+.pageHead h1 { font-size: var(--text-display); line-height: .92; margin: 14px 0 0; }
+.projects { padding: 0 1vw; display: grid; gap: 96px; }
+.project { margin: 0; }
+.projectGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.projectGrid img { height: 62vh; }
+.projectGrid img:first-child:not(:only-child) { grid-column: span 2; }
+.projectGrid .magnolia { object-position: left center; }
+.project figcaption {
+  padding: 20px calc(var(--gutter) - 1vw) 0;
+  font-size: var(--text-small);
+  color: var(--driftwood);
+}
+.project figcaption b { color: var(--espresso); font-weight: 600; }
+.pageCta { padding: var(--section) var(--gutter); text-align: center; }
+.pageCta h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 0; }
 
 /* Contact: intro left, enquiry form right, on espresso */
 .cta {
@@ -284,7 +377,21 @@ h1 em, h2 em { font-style: italic; }
   .hero h1 { font-size: 54px; margin: 14px 0 18px; }
   .testimonials { grid-template-columns: 1fr; gap: 36px; padding-bottom: 56px; }
   .testimonial { padding: 28px 24px 32px; }
-  .intro { grid-template-columns: 1fr; gap: 28px; padding-bottom: 48px; }
+  .about { grid-template-columns: 1fr; gap: 40px; padding-bottom: 64px; }
+  .about img { height: 70vh; }
+  .galleryMore { padding: 18px 7vw 0; }
+  .services.three { grid-template-columns: 1fr; }
+  .services.three .service { border-right: 0; border-bottom: 1px solid var(--line); }
+  .services.three .service:last-child { border-bottom: 0; }
+  .price, .faq { grid-template-columns: 1fr; gap: 28px; }
+  .nav.onLight .brand { color: var(--espresso); }
+  .nav.onLight .navlinks { display: none; }
+  .pageHead { padding: 24px 7vw 48px; }
+  .projects { padding: 0; gap: 72px; }
+  .projectGrid { grid-template-columns: 1fr 1fr; }
+  .projectGrid img { height: 46vh; }
+  .projectGrid img:first-child, .projectGrid img:only-child { grid-column: 1 / -1; height: 62vh; }
+  .project figcaption { padding: 16px 7vw 0; }
   .gallery { grid-template-columns: 1fr 1fr; padding: 0; }
   .gallery img { height: 46vh; }
   .gallery img:first-child { grid-column: 1 / -1; height: 62vh; }

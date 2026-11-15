@@ -7,7 +7,8 @@ Started as a port of the earlier single-file site at https://fabelfabriken.netli
 ## Structure
 
 ```
-index.html        the page
+index.html        the main page
+projekt.html      project gallery (one captioned figure per project)
 css/style.css     all styles; design tokens at the top (see DESIGN.md)
 js/contact.js     contact form (sends to Formspree)
 images/           photos (hero.jpg is the hero image)

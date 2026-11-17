@@ -233,17 +233,15 @@ h1 em, h2 em { font-style: italic; }
 .steps b { font-size: var(--text-label); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--espresso); }
 .steps p { margin: 4px 0 0; font-size: var(--text-small); line-height: 1.6; }
 
-/* Price: heading left, text right */
-.price, .faq {
+/* FAQ: heading left, content right */
+.faq {
   padding: var(--section) var(--gutter);
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 10vw;
   align-items: start;
 }
-.price { padding-bottom: 64px; }
-.price h2, .faq h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 0; }
-.price p { margin: 0; max-width: 46ch; align-self: end; }
+.faq h2 { font-size: var(--text-h2); line-height: .95; margin: 14px 0 0; }
 
 /* FAQ: native <details>, questions in sans (serif stays 26px+) */
 .faq { padding-top: 64px; }
@@ -388,7 +386,7 @@ h1 em, h2 em { font-style: italic; }
   .services.three { grid-template-columns: 1fr; }
   .services.three .service { border-right: 0; border-bottom: 1px solid var(--line); }
   .services.three .service:last-child { border-bottom: 0; }
-  .price, .faq { grid-template-columns: 1fr; gap: 28px; }
+  .faq { grid-template-columns: 1fr; gap: 28px; }
   .nav.onLight .brand { color: var(--espresso); }
   .nav.onLight .navlinks { display: none; }
   .pageHead { padding: 24px 7vw 48px; }
